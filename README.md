@@ -1,45 +1,41 @@
-# Soroban Token Kontratı (soroban-token-contract)
+# Soroban Token Contract (soroban-token-contract)
 
-Bu proje, [Stellar](https://stellar.org/) ağı üzerinde çalışan [Soroban](https://soroban.stellar.org/) akıllı kontrat platformu için geliştirilmiş bir token (jeton) kontratıdır.
-Standart token işlevselliklerini (transfer, bakiye sorgulama, onay mekanizmaları vb.) ve yöneticiye özel bazı ek özellikleri içerir.
+This project is a token contract developed for the [Soroban](https://soroban.stellar.org/) smart contract platform running on the [Stellar](https://stellar.org/) network.  
+It includes standard token functionalities (transfer, balance query, approval mechanisms, etc.) as well as some admin-specific features.
 
-## Projenin Amacı
+## Purpose of the Project
 
-Bu kontrat, aşağıdaki amaçlar için bir temel veya örnek olarak kullanılabilir:
+This contract can be used as a foundation or example for the following purposes:
 
-*   Soroban üzerinde özel bir token oluşturmak.
-*   `soroban-sdk` ve `soroban-token-sdk` kullanarak token geliştirme pratiklerini öğrenmek.
-*   Yönetici kontrollü özelliklere (token basma, hesap dondurma, token geri alma) sahip bir token altyapısı sağlamak.
+* Creating a custom token on Soroban.
+* Learning token development practices using `soroban-sdk` and `soroban-token-sdk`.
+* Providing a token infrastructure with admin-controlled features (minting, freezing accounts, clawbacks).
 
-## Temel Özellikler
+## Key Features
 
-*   **Token Başlatma (`initialize`):** Token'ı ondalık basamak sayısı, adı, sembolü ve bir yönetici adresi ile başlatır.
-*   **Standart Token Fonksiyonları:**
-    *   `balance`: Bir adresin token bakiyesini sorgular.
-    *   `transfer`: Belirli bir adresten diğerine token transfer eder.
-    *   `approve`: Bir harcayıcının (spender) belirli bir miktar token harcamasına izin verir.
-    *   `allowance`: Bir sahibin (owner) bir harcayıcıya ne kadar token harcama izni verdiğini sorgular.
-    *   `transfer_from`: Onaylanmış bir miktarı bir adresten diğerine transfer eder.
-    *   `burn`: Belirli bir adresten token yakar (yok eder).
-    *   `burn_from`: Onaylanmış bir miktarı belirli bir adresten yakar.
-*   **Yönetici (Admin) Fonksiyonları:**
-    *   `mint`: Belirli bir adrese yeni token basar (sadece yönetici).
-    *   `set_admin`: Kontratın yöneticisini değiştirir (sadece mevcut yönetici).
-    *   `set_authorized`: Bir hesabın token transferi yapabilme durumunu ayarlar (dondurma/çözme, sadece yönetici).
-    *   `clawback`: Belirli bir hesaptan tokenları geri alır (sadece yönetici).
-*   **Metaveri Fonksiyonları:**
-    *   `decimals`: Token'ın ondalık basamak sayısını döndürür.
-    *   `name`: Token'ın adını döndürür.
-    *   `symbol`: Token'ın sembolünü döndürür.
+* **Token Initialization (`initialize`)**: Initializes the token with decimal places, name, symbol, and an admin address.
+* **Standard Token Functions:**
+  * `balance`: Queries the token balance of an address.
+  * `transfer`: Transfers tokens from one address to another.
+  * `approve`: Authorizes a spender to spend a specified amount of tokens.
+  * `allowance`: Queries how many tokens a spender is allowed to use on behalf of an owner.
+  * `transfer_from`: Transfers an approved amount from one address to another.
+  * `burn`: Burns (destroys) tokens from a specific address.
+  * `burn_from`: Burns an approved amount of tokens from a specific address.
+* **Admin Functions:**
+  * `mint`: Mints new tokens to a specific address (admin only).
+  * `set_admin`: Changes the contract's admin (admin only).
+  * `set_authorized`: Sets whether an account can transfer tokens (freeze/unfreeze, admin only).
+  * `clawback`: Retrieves tokens from a specific account (admin only).
+* **Metadata Functions:**
+  * `decimals`: Returns the number of decimal places of the token.
+  * `name`: Returns the name of the token.
+  * `symbol`: Returns the symbol of the token.
 
-### Kontratı Derleme
+### Build the Contract
 
 ```bash
 soroban contract build
-```
-### Testeleri Çalıştırma
-```bash
-cargo test
 ```
 
 *The code in this project has been interpreted with the help of AI.*
