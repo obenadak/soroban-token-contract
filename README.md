@@ -41,3 +41,5 @@ soroban contract build
 ```bash
 cargo test
 ```
+
+*The code in this project has been interpreted with the help of AI.*
